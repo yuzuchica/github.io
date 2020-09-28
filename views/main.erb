@@ -1,0 +1,9 @@
+<% if !current_user.nil? %>
+  <h2><%= current_user.name %>さんの貯金箱<h2>
+  <a href="/signout">ログアウト</a>
+<% end %>
+
+<form name="myForm">
+<p id="time" name="myFormTime">00:00</p>
+<input type="button" value="Start" name="myFormButton" onclick="myCheck()">
+</form>
