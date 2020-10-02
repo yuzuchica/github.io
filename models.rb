@@ -7,4 +7,14 @@ end
 
 class User < ActiveRecord::Base
   has_secure_password
+  has_many :times
+  has_many :historys
+end
+
+class Time < ActiveRecord::Base
+  belongs_to :user
+end
+
+class History < ActiveRecord::Base
+  belongs_to :user
 end
