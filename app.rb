@@ -49,5 +49,13 @@ get '/signout' do
 end
 
 get '/main' do
+  @works = Work.all
   erb :main
+end
+
+post '/time' do
+  Work.create!(
+    work: params[:myM],
+    user_id: current_user.id
+    )
 end

@@ -1,6 +1,6 @@
-class CreateTimes < ActiveRecord::Migration[5.2]
+class CreateWorks < ActiveRecord::Migration[5.2]
   def change
-    create_table :times do |t|
+    create_table :works do |t|
       t.integer :user_id
       t.integer :work
       t.timestamps null: false

@@ -7,3 +7,7 @@
 <p id="time" name="myFormTime">00:00</p>
 <input type="button" value="Start" name="myFormButton" onclick="myCheck()">
 </form>
+
+<% @works.each do |work| %>
+  <p> <%= work.work %></p>
+<% end %>

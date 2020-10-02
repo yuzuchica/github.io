@@ -11,10 +11,10 @@ class User < ActiveRecord::Base
   has_many :historys
 end
 
-class Time < ActiveRecord::Base
+class History < ActiveRecord::Base
   belongs_to :user
 end
 
-class History < ActiveRecord::Base
+class Work < ActiveRecord::Base
   belongs_to :user
 end

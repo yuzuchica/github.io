@@ -10,6 +10,11 @@ function myCheck() {
     myButton = 0;
     document.myForm.myFormButton.value = "Start";
     clearInterval(myInterval);
+
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', '/time');
+    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
+    xhr.send(myM = Math.floor(myTime / (60 * 1000)));
   }
 }
 
@@ -26,5 +31,4 @@ function myDisp() {
   strTime = myM + ":" + myS; //+ ":" + myMS;
 
   document.getElementById("time").innerHTML = strTime;
-
 }
