@@ -1,0 +1,8 @@
+<h2><%= current_user.name %>さんの貯金箱<h2>
+<a href="/main">メインページに戻る</a>
+
+<% @histories.each do |history| %>
+<p><%= history.purpose %>のために<%= history.money %>円使った</p>
+<p><%= history.created_at %></p>
+<a href="/delete/<%= history.id %>">削除</a>
+<% end %>

@@ -50,17 +50,36 @@ end
 
 get '/main' do
   @works = current_user.works.sum(:work)
+  @monies = current_user.histories.sum(:money)
   @today = current_user.works.where("created_at >= ?", Time.now.beginning_of_day).sum(:work)
+  @one = current_user.works.where(created_at: 1.day.ago.all_day).sum(:work)
+  @two = current_user.works.where(created_at: 2.day.ago.all_day).sum(:work)
+  @three = current_user.works.where(created_at: 3.day.ago.all_day).sum(:work)
+  @four = current_user.works.where(created_at: 4.day.ago.all_day).sum(:work)
   erb :main
 end
 
 post '/time' do
   current_user.works.create!(
-    work: params[:myM],
+    work: params[:myM].to_i*10,
     user_id: current_user.id
     )
 end
 
 post '/money' do
+  current_user.histories.create!(
+    money: params[:money],
+    purpose: params[:purpose]
+  )
+  redirect '/main'
+end
 
+get '/history' do
+  @histories = History.all
+  erb :history
+end
+
+get '/delete/:id' do
+  History.find(params[:id]).destroy
+  redirect '/history'
 end

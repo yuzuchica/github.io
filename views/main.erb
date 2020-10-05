@@ -2,12 +2,13 @@
   <h2><%= current_user.name %>さんの貯金箱<h2>
   <a href="/signout">ログアウト</a><br>
 <% end %>
-<p>合計貯金額：<%= @works %> 円</p>
+<p>合計貯金額：<%= (@works - @monies) %> 円</p>
 <form action="/money" method="post">
   <input type="text" name="purpose" placeholder="使用目的">のために
-  <input type="text" name="money" placeholder="使用金額">円
+  <input type="number" name="money" placeholder="使用金額">円
   <input type="submit" value="使った">
 </form>
+<a href="/history">使用履歴</a><br>
 
 <form name="myForm">
 <p id="time" name="myFormTime">ストップウォッチ</p>
@@ -15,3 +16,6 @@
 </form>
 
 <p>今日の貯金額：<%= @today %> 円</p>
+
+<p>5日前<br>4日前<br>3日前<br>2日前<br>昨日<br>今日</p>
+<p><%= @four %>円<br><%= @three %>円<br><%= @two %>円<br><%= @one %>円<br><%= @today %>円</p>

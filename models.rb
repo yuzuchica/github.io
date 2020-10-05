@@ -8,7 +8,7 @@ end
 class User < ActiveRecord::Base
   has_secure_password
   has_many :works
-  has_many :historys
+  has_many :histories
 end
 
 class History < ActiveRecord::Base
