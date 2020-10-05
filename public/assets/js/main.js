@@ -14,7 +14,7 @@ function myCheck() {
     var xhr = new XMLHttpRequest();
     xhr.open('POST', '/time');
     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
-    xhr.send(myM = Math.floor(myTime / (60 * 1000)));
+    xhr.send(`myM=${Math.floor(myTime / 60000)}`);
   }
 }
 
@@ -25,10 +25,10 @@ function myDisp() {
   // '時間'取得
   myTime = myTime - (myH * 60 * 60 * 1000);
   myM = Math.floor(myTime / (60 * 1000)); // '分'取得
-  myTime = myTime - (myM * 60 * 1000);
-  myS = Math.floor(myTime / 1000); // '秒'取得
+  //myTime = myTime - (myM * 60 * 1000);
+  //myS = Math.floor(myTime / 1000); // '秒'取得
   //myMS = myTime % 1000;  'ミリ秒'取得
-  strTime = myM + ":" + myS; //+ ":" + myMS;
+  strTime = myM; //+ ":" + myS; //+ ":" + myMS;
 
   document.getElementById("time").innerHTML = strTime;
 }

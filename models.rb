@@ -7,7 +7,7 @@ end
 
 class User < ActiveRecord::Base
   has_secure_password
-  has_many :times
+  has_many :works
   has_many :historys
 end
 
@@ -16,5 +16,5 @@ class History < ActiveRecord::Base
 end
 
 class Work < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :User
 end

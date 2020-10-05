@@ -49,13 +49,18 @@ get '/signout' do
 end
 
 get '/main' do
-  @works = Work.all
+  @works = current_user.works.sum(:work)
+  @today = current_user.works.where("created_at >= ?", Time.now.beginning_of_day).sum(:work)
   erb :main
 end
 
 post '/time' do
-  Work.create!(
+  current_user.works.create!(
     work: params[:myM],
     user_id: current_user.id
     )
+end
+
+post '/money' do
+
 end

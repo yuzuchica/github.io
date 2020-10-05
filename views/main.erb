@@ -1,13 +1,17 @@
 <% if !current_user.nil? %>
   <h2><%= current_user.name %>さんの貯金箱<h2>
-  <a href="/signout">ログアウト</a>
+  <a href="/signout">ログアウト</a><br>
 <% end %>
+<p>合計貯金額：<%= @works %> 円</p>
+<form action="/money" method="post">
+  <input type="text" name="purpose" placeholder="使用目的">のために
+  <input type="text" name="money" placeholder="使用金額">円
+  <input type="submit" value="使った">
+</form>
 
 <form name="myForm">
-<p id="time" name="myFormTime">00:00</p>
+<p id="time" name="myFormTime">ストップウォッチ</p>
 <input type="button" value="Start" name="myFormButton" onclick="myCheck()">
 </form>
 
-<% @works.each do |work| %>
-  <p> <%= work.work %></p>
-<% end %>
+<p>今日の貯金額：<%= @today %> 円</p>
