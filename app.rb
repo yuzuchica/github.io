@@ -5,6 +5,8 @@ require 'sinatra/reloader' if development?
 require 'sinatra/activerecord'
 require './models'
 
+require "date"
+
 enable :sessions
 
 helpers do
@@ -49,6 +51,13 @@ get '/signout' do
 end
 
 get '/main' do
+  @date = DateTime.now
+  @one_date = DateTime.yesterday
+  @two_date = DateTime.current.ago(2.days)
+  @three_date = DateTime.current.ago(3.days)
+  @four_date = DateTime.current.ago(4.days)
+  @five_date = DateTime.current.ago(5.days)
+  @six_date = DateTime.current.ago(6.days)
   @works_sum = current_user.works.sum(:work)
   @monies = current_user.histories.sum(:money)
   @today = current_user.works.where("created_at >= ?", Time.now.beginning_of_day).sum(:work)
@@ -57,8 +66,9 @@ get '/main' do
   @two = current_user.works.where(created_at: 2.day.ago.all_day).sum(:work)
   @three = current_user.works.where(created_at: 3.day.ago.all_day).sum(:work)
   @four = current_user.works.where(created_at: 4.day.ago.all_day).sum(:work)
-  @works = Work.all
-  @histories = History.all
+  @five = current_user.works.where(created_at: 5.day.ago.all_day).sum(:work)
+  @six = current_user.works.where(created_at: 6.day.ago.all_day).sum(:work)
+  @histories = current_user.histories.where("created_at >= ?", Time.now.beginning_of_month)
   erb :main
 end
 
@@ -79,5 +89,5 @@ end
 
 get '/delete/:id' do
   History.find(params[:id]).destroy
-  redirect '/history'
+  redirect '/main'
 end
