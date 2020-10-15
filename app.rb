@@ -30,7 +30,7 @@ post '/signup' do
   if user.persisted?
     session[:user] = user.id
   end
-  redirect '/'
+  redirect '/main'
 end
 
 post '/signin' do
