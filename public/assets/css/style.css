@@ -155,30 +155,38 @@ body {
 }
 
 .main {
-  background-color: #E27D81;
-  padding-bottom: 100%;
+  background-image: url(/assets/img/pink.jpg);
+  background-size: 100% auto;
+  padding-bottom: 5%;
+  margin: 0px;
 }
 
 .time {
-  color: #F1F1F1;
+  color: #4D4D4D;
   float: left;
   width: 20%;
   margin: 0px;
   padding-right: 0px;
-  padding-top: 5%;
-  padding-left: 30%;
+  padding-top: 3%;
+  padding-left: 27.5%;
   font-size: 8vw;
   border-color: #F1F1F1;
+  height: 100%;
+}
+
+.time p {
+  margin: 0px;
+  border-radius: 10px;
+  text-align: center;
 }
 
 
-
 .start {
-  padding-top: 15%;
+  padding-top: 5%;
   float: left;
   width: 40%;
   margin: 0px;
-  padding-right: 10%;
+  padding-left: 8%;
 }
 
 .start input {
@@ -192,6 +200,91 @@ body {
 }
 
 .start input:hover {
+  text-align: center;
+  color: #F1F1F1;
+  background-color: #000000;
+}
+
+.today-sum {
+  clear: both;
+  text-align: center;
+  padding-top: 3%;
+  font-size: 3vw;
+  color: #F1F1F1;
+}
+
+.stopwatch {
+  padding: 5%;
+}
+
+.stopwatch h1 {
+  margin: 0px auto;
+  margin-bottom: 0%;
+  ;
+  text-align: center;
+  font-size: 3vw;
+  padding: 2px;
+  padding-left: 8px;
+  width: 35%;
+  border: solid .25vw;
+}
+
+.money {
+  clear: both;
+  padding: 5%;
+  padding-top: 10%;
+}
+
+.money h1 {
+  margin: 0px auto;
+  margin-bottom: 0%;
+  ;
+  text-align: center;
+  font-size: 3vw;
+  padding: 2px;
+  width: 35%;
+  border: solid .3vw;
+}
+
+.money-left {
+  text-align: center;
+  float: left;
+  width: 30%;
+  padding-left: 20%;
+  font-size: 2vw;
+}
+
+.money-left input {
+  font-size: 1.5vw;
+  text-align: center;
+  color: rgb(70, 69, 69);
+  background-color: #F1F1F1;
+  border: solid 1px #000000;
+  border-radius: 9px;
+  padding: 2% 10%;
+  margin-top: 5%;
+  width: 50%;
+}
+
+.money-right {
+  padding-top: 0px;
+  float: left;
+  margin: 0px;
+  padding-left: 5%;
+  width: 40%;
+}
+
+.money-right input {
+  font-size: 2.5vw;
+  text-align: center;
+  color: #000000;
+  background-color: #F1F1F1;
+  padding: 1.5% 9%;
+  margin-top: 8%;
+  border: none;
+}
+
+.money-right input:hover {
   text-align: center;
   color: #F1F1F1;
   background-color: #000000;

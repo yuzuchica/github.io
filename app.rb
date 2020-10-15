@@ -49,13 +49,16 @@ get '/signout' do
 end
 
 get '/main' do
-  @works = current_user.works.sum(:work)
+  @works_sum = current_user.works.sum(:work)
   @monies = current_user.histories.sum(:money)
   @today = current_user.works.where("created_at >= ?", Time.now.beginning_of_day).sum(:work)
+  @today_money = current_user.histories.where("created_at >= ?", Time.now.beginning_of_day).sum(:money)
   @one = current_user.works.where(created_at: 1.day.ago.all_day).sum(:work)
   @two = current_user.works.where(created_at: 2.day.ago.all_day).sum(:work)
   @three = current_user.works.where(created_at: 3.day.ago.all_day).sum(:work)
   @four = current_user.works.where(created_at: 4.day.ago.all_day).sum(:work)
+  @works = Work.all
+  @histories = History.all
   erb :main
 end
 
@@ -68,15 +71,10 @@ end
 
 post '/money' do
   current_user.histories.create!(
-    money: params[:money],
+    money: params[:money].to_i,
     purpose: params[:purpose]
   )
   redirect '/main'
-end
-
-get '/history' do
-  @histories = History.all
-  erb :history
 end
 
 get '/delete/:id' do

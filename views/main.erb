@@ -1,9 +1,7 @@
 <div class="top">
-  <div class="left">
-
+  <div class="center">
+  <a href="#money"><img src="/assets/img/pig_off.png" onmouseover="this.src='/assets/img/pig_on.png'"  onmouseout="this.src='/assets/img/pig_off.png'" ></a>
   </div>
-  <img src="/assets/img/pig.png" class="center">
-  <img src="/assets/img/clock.png" class="center">
   <div class="right">
 
 <a href="/signout">Sign out</a>
@@ -12,19 +10,54 @@
 <p><%= current_user.name %>さんの
 <% end %>
 <br>合計貯金額<br>
-<span>¥ <%= (@works - @monies) %></span>
+<span>¥ <%= (@works_sum - @monies) %></span>
 </p>
 </div>
 </div>
 </div>
-
 <div class="main">
-<div class="time">
-<form name="myForm">
-<p id="time" name="myFormTime">0</p>
+  <div class="stopwatch">
+  <h1>STOP WATCH</h1>
+  </div>
+  <div class="time">
+  <form name="myForm">
+  <p id="time" name="myFormTime">0</p>
+  </div>
+  <div class="start">
+  <input type="button" value="Start" name="myFormButton" onclick="myCheck()">
+  </form>
+  </div>
+  <div class="today-sum">
+  <p>今日の貯金額　¥<%= @today %> </p>
+  </div>
+  <div class="box">4日前<br><%= @four %>円
+  </div>
+  <div class="box">3日前<br><%= @three %>円
+  </div>
+  <div class="box">2日前<br><%= @two %>円
+  </div>
+  <div class="box">昨日<br><%= @one %>円
+  </div>
+  <div class="box">今日<br><%= @today %>円
+  </div>
+<div class="money" id="money">
+<h1>MONEY</h1>
 </div>
-<div class="start">
-<input type="button" value="Start" name="myFormButton" onclick="myCheck()">
+<div class="money-left">
+<form action="/money" method="post">
+  <input type="text" name="purpose" placeholder="使用目的"><br>
+  <input type="number" name="money" placeholder="¥ 使用金額">
+  </div>
+  <div class="money-right">
+  <input type="submit" value="使った">
+  </div>
+  <div class="today-sum">
+  <p>今日の使用額　¥<%= @today_money %> </p>
+  </div>
 </form>
-</div>
+<% @histories.each do |history| %>
+<p><%= history.purpose %>のために<%= history.money %>円使った</p>
+<p><%= history.created_at %></p>
+<a href="/delete/<%= history.id %>">削除</a>
+<% end %>
 </div>
