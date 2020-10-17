@@ -3,12 +3,12 @@ function myCheck() {
   if (myButton == 0) { // Startボタンを押した
     myStart = new Date(); // スタート時間を退避
     myButton = 1;
-    document.myForm.myFormButton.value = "Stop!";
+    document.myForm.myFormButton.value = "STOP!";
     myInterval = setInterval("myDisp()", 1);
   } else { // Stopボタンを押した
     myDisp();
     myButton = 0;
-    document.myForm.myFormButton.value = "Start";
+    document.myForm.myFormButton.value = "START";
     clearInterval(myInterval);
 
     var xhr = new XMLHttpRequest();

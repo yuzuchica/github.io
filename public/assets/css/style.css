@@ -204,6 +204,7 @@ body {
   width: 40%;
   margin: 0px;
   padding-left: 8%;
+  color: #F1F1F1;
 }
 
 .start input {
@@ -220,6 +221,10 @@ body {
   text-align: center;
   color: #F1F1F1;
   background-color: #1A1A1A;
+}
+
+.start p {
+  color: #F1F1F1;
 }
 
 .today-sum {
